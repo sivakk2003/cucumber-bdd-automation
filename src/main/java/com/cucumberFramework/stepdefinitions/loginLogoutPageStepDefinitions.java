@@ -1,15 +1,13 @@
 package com.cucumberFramework.stepdefinitions;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-
 import com.cucumberFramework.helper.WaitHelper;
 import com.cucumberFramework.pageObjects.LoginLogoutPage;
 import com.cucumberFramework.testBase.TestBase;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 
 public class loginLogoutPageStepDefinitions extends TestBase {
@@ -25,9 +23,33 @@ public class loginLogoutPageStepDefinitions extends TestBase {
 
 	@Then("^I click on sign in button and wait for sign in page$")
 	public void i_click_on_sign_in_button_and_wait_for_sign_in_page() throws Throwable {
-		loginPage.clickSignInButton();
 		waitHelper.WaitForElement(loginPage.userName, 60);
+		loginPage.clickSignInButton();
 	}
+
+	@Then("^I hover on the element and click$")
+	public void hover_click() throws Throwable {
+		waitHelper.WaitForElement(loginPage.dress, 60);
+		loginPage.hoverDress();
+	}
+	@Then("^I hover on the element and add to cart$")
+	public void hover_add_to_cart() throws Throwable {
+		waitHelper.WaitForElement(loginPage.causalsDress, 60);
+		loginPage.addcart();
+	}
+
+	@Then("^I proceed to checkout the product$")
+	public void proceed_checkout() throws Throwable {
+		waitHelper.WaitForElement(loginPage.proceedToCheckout, 60);
+		loginPage.checkOut();
+	}
+
+
+	/*@Then("^I click on sign-in button and wait for sign in page$")
+	public void i_click_on_signin_button_and_wait_for_sign_in_page() throws Throwable {
+		loginPage.clickSign();
+		waitHelper.WaitForElement(loginPage.userName, 60);
+	}*/
 
 	@Then("^I should see Sign In Page$")
 	public void i_should_see_Sign_In_Page() throws Throwable {
